@@ -1,0 +1,12 @@
+SELECT
+Non Empty Order
+([Reseller geography].[geographies].[City], [Measures].[Order Quantity - Fact Reseller Sales], BDESC )on 1,
+( [Measures].[Order Quantity - Fact Reseller Sales],
+DrilldownMember
+ (
+ [Order Date].[Hierarchy].[Calendar Quarter].Members,
+ { [Order Date].[Hierarchy].[Calendar Quarter], [Order Date].[Hierarchy].[English Month Name] }
+ )
+) on 0
+FROM [Adventure Works DW2019]
+WHERE ( [order date].[calendar year].[2013], [Dim Product].[Model Name])

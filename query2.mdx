@@ -1,0 +1,11 @@
+
+
+--predict the colour of each bike
+select
+nonempty( [dim customer].[gender].children) on columns,
+( nonempty([dim product].[Model Name].children),
+ nonempty([dim product].[color].children)
+)on rows
+from [Adventure Works DW2019]
+
+
